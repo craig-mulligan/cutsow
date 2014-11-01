@@ -1,0 +1,26 @@
+{% extends "feed/base.html" %}
+{% block content %}
+<div class="main">
+    <div class="row">
+     {% include "dashboard/dashmenu.html" %}
+            <div class="content col-md-9">
+                <form class="col-md-9" role="form" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <img class="avatar" src="http://localhost/{{user.info.avatar}}"/>
+                        <label>First Name</label><input required name="first_name" class="form-control form-group" value="{{user.first_name}}" disabled />
+                        <label>Last Name</label><input required name="last_name" class="form-control form-group" value="{{user.last_name}}" disabled />
+                        <label>Email</label><input required name="email" class="form-control form-group" value="{{user.email}}" disabled />
+                        <label>Phone</label><input required name="phone" class="form-control form-group" value="{{user.info.phone}}" disabled />
+                        <label>Twitter Handle</label><input required name="twitter" class="form-control form-group" value="{{user.info.twitter}}" disabled />
+                        <label>Password</label><input name="password" class="form-control form-group" type="password" placeholder="Change password" disabled />
+                        <label>Profile Image</label>
+                        <input id="id_image" type="file" class="" name="avatar">
+                    </div>
+                    <a class="editProfile btn btn-default">Edit</a>
+                    <input class="btn btn-default" type="submit" name="action" value="Update" disabled />
+                </form>
+            </div> {# .content #}
+    </div> {# .row #}
+</div>
+{% endblock %}

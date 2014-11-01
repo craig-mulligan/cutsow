@@ -1,0 +1,86 @@
+body { padding: 50px 0 0; background-color: #f5f5f5; }
+
+a { color: #6b7583; }
+a:hover, a:active, a:focus { color: #fff; }
+
+label { display: block; }
+
+.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active { background-color: #00142c; border-color: #00142c; }
+
+.btn-primary:focus { background: #00142c; }
+
+#longmenu { padding: 30px 0; background: #00142c; color: #fff; position: fixed; }
+#longmenu ul { list-style: none; padding-left: 0px; }
+#longmenu li { color: white; border-bottom: 1px solid #fff; padding: 15px 15px 15px 30px; }
+#longmenu li a:hover { color: #fff; }
+
+.content { padding: 30px; }
+
+.product { background: #6B7583; height: 250px; margin-bottom: 15px; cursor: pointer; display: block; background-size: cover; background-position: center center; }
+.product .titleoverlay { padding-top: 80px; font-size: 5rem; color: #00142c; width: 5rem; margin: auto; }
+.product .rating { width: 40px; height: 40px; background: #DE9E9A; text-align: center; padding: 10px; }
+
+.thumbnail { width: 150px; }
+
+.login form { display: block; margin: 0 auto; width: 100%; max-width: 400px; }
+.login form .btn { width: 100%; }
+
+table { width: 100%; margin-bottom: 10px; background-color: #fff; }
+table.no-border td { border: none; }
+table a { font-weight: bold; }
+table td, table th { padding: 5px 10px; border: 1px solid #dedede; }
+table th { border-bottom: 2px solid #dedede; }
+table td { color: #737373; }
+table .complete { background-color: #6b7583; color: #fff; text-align: center; }
+table .progress { margin-bottom: 0px; }
+table .progress-bar { background-color: #6b7583; -webkit-box-shadow: none; box-shadow: none; min-width: 25px; }
+
+.panel-title a { display: block; }
+
+.overlay { display: none; position: fixed; z-index: 1031; top: 0px; bottom: 0px; left: 0px; right: 0px; background-color: #000; background-color: rgba(0, 0, 0, 0.5); }
+
+.popup { position: absolute; width: 34%; top: 50px; bottom: 0px; right: 0px; padding: 20px; border: 1px solid #eee; background: #fff; }
+
+.messages { width: 100%; margin: 0; border-bottom: 1px solid #eee; list-style: none; border-bottom: 1px solid #faebcc; list-style: none; background: #fcf8e3; padding-left: 0px; }
+.messages li { padding: 10px 30px 10px 0px; display: inline-block; color: #66512c; }
+
+.navbar { margin-bottom: 0px; background-color: #fff; border-color: #dedede; }
+.navbar a { font-weight: bold; color: #6c6c6c; }
+.navbar .navbar-brand { letter-spacing: 1px; }
+
+.nav > li { border-right: 1px solid #dedede; }
+.nav > li:first-child { border-left: 1px solid #dedede; }
+
+.light { font-weight: normal; }
+
+.header_link { background: transparent; color: #fff; border-color: #a8d99e; }
+.header_link:hover { background-color: #fff; color: #6b7583; border-color: transparent; }
+
+.outer_content { padding: 40px 0; }
+
+.main_content { padding: 20px 0; background-color: #fff; }
+
+.btn-primary { background-color: #6b7583; border-color: #00142c; }
+.btn-primary:hover { background-color: #00142c; border-color: #00142c; }
+
+.save_start.ready { display: inline-block; }
+
+.right { float: right; }
+
+.red { color: white !important; background-color: #f97272 !important; }
+
+.orange { background-color: #f4ab55 !important; color: #fff; }
+
+.yellow { background-color: #edd553 !important; color: #fff; }
+
+.primary { color: #fff; background-color: #6b7583; }
+
+.logo { max-width: 100%; }
+
+.col-centered { float: none; margin: 0 auto; }
+
+form img { max-width: 70%; margin: 10px 0; display: block; }
+
+#id_email, #id_new_password2, #id_new_password1 { height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; border-radius: 4px; width: 100%; margin-bottom: 15px; }
+
+@media print { body { background-color: #fff; } }

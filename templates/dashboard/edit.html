@@ -1,0 +1,22 @@
+{% extends "feed/base.html" %}
+{% block content %}
+<div class="main">
+    <div class="row">
+     {% include "dashboard/dashmenu.html" %}
+            <div class="content col-md-9">
+                <form class="col-md-9" role="form" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Title</label><input required name="title" class="form-control form-group" value="{{product.title}}" disabled/>
+                        <label>Description</label><input required name="description" class="form-control form-group" value="{{product.description}}" disabled/>
+                        <input id="id_image" type="file" class="" name="image" disabled>
+                        <img class="thumbnail" src="http://localhost/{{product.image}}" />
+                        <input required name="productid" class="form-control form-group" value="{{product.pk}}" type="hidden" />
+                    </div>
+                    <a class="editProfile btn btn-default">Edit</a>
+                    <input class="btn btn-default" type="submit" name="action" value="Update" disabled />
+                </form>
+            </div> {# .content #}
+    </div> {# .row #}
+</div>
+{% endblock %}
