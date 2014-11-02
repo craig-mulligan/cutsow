@@ -40,28 +40,48 @@ def create(request):
                 product = form.save(request.user)
                 messages.add_message(
                     request, messages.INFO, "You have successfully created a product.")
-
-     
-        return render(request, "dashboard/create.html", {
-        })
+            products = models.Product.objects.filter(user=request.user).all()
+            return render(request, "dashboard/products.html", {
+                "products": products,
+            })
+        else:
+            return render(request, "dashboard/create.html", {
+            })
 
 @login_required
 def edit(request, product_id):
+    p = models.Product.objects.get(pk=int(product_id))
     if request.user.info.designer == False:
         return redirect('/dashboard/personal')
     else:
         if request.method == 'POST':
-            # checks which form they are submitting
-            form = productUpdateForm(request.POST, request.FILES)
-            if form.is_valid():
-                product = form.save(request.user)
-                messages.add_message(
-                    request, messages.INFO, "Your Product has successfully been updated.")
+            if '_edit' in request.POST:
+                # checks which form they are submitting
+                form = productUpdateForm(request.POST, request.FILES)
+                if form.is_valid():
+                    product = form.save(request.user)
+                    messages.add_message(
+                        request, messages.INFO, "Your Product has successfully been updated.")
 
-        p = models.Product.objects.get(pk=int(product_id))
-        return render(request, "dashboard/edit.html", {
-            "product": p
-        })
+                p = models.Product.objects.get(pk=int(product_id))
+                return render(request, "dashboard/edit.html", {
+                    "product": p
+                })
+            elif '_delete' in request.POST:
+                p.delete();
+                products = models.Product.objects.filter(user=request.user).all()
+                messages.add_message(
+                    request, messages.INFO, "Your Product has successfully been deleted.")
+
+                return render(request, "dashboard/products.html", {
+                    "products": products,
+                })
+        else:
+
+            return render(request, "dashboard/edit.html", {
+                    "product": p
+            })
+
 
 @login_required
 def products(request):
@@ -82,8 +102,11 @@ def following(request):
             user = form.save(request.user)
             messages.add_message(
                 request, messages.INFO, "Your account has successfully been updated.")
+
+    follows = request.user.info.follows
  
-    return render(request, "dashboard/dashboard.html", {
+    return render(request, "dashboard/following.html", {
+        "follows": follows,
     })
 
 @login_required

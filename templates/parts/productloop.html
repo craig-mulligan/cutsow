@@ -1,0 +1,21 @@
+<div class="col-md-4">
+    <a href="/feed/product/{{p.id}}" class="product" style="background-image:url('/{{p.image}}')">
+        <div class="rating">
+             {{p.rating}}   
+        </div>
+        <div class="thumbsup">
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+            <span class="glyphicon glyphicon-thumbs-down"></span>
+        </div>
+    </a>
+    <div class="row">
+        <div class="meta col-xs-6">
+            <h3>{{p.title}}</h3>
+            <p>by <a href="/feed/user/{{p.user.id}}">{{p.user.first_name}}</a></p>
+        </div>
+        <div class="rating col-xs-6">
+              <button type="button" class="btn btn-default cut">Cut</button>
+              <button type="button" class="btn btn-default sow">Sow</button>
+        </div>
+    </div>
+</div>

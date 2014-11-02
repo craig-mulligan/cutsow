@@ -1,0 +1,35 @@
+{% extends "feed/base.html" %}
+{% block content %}
+<div class="main">
+    <div class="content">
+        <div class="row">
+            <div class="content">
+                <div class="col-xs-3">
+                    <div class="avatar medium" style="background-image:url('/{{user.info.avatar}}')"></div>
+                </div>
+                <div class="col-xs-9">
+                    <div class="meta">
+                        <h3><a href="/feed/user/{{user.id}}">{{user.first_name}}'s</a> Followers</h3>
+                    </div>
+                </div>
+                
+            </div> {# .content #}
+        </div> {# .row #}
+        <table class="table table-striped">
+            {% for f in followers %}
+              <tr>
+                <td>
+                  <div class="avatar small" style="background-image:url('/{{f.info.avatar}}')"></div>
+                </td>
+                <td>
+                 <a href="/feed/user/{{f.id}}"> {{f.first_name}}</a>
+                </td>
+                <td class="warning">
+                    {{f.rating}}
+                </td>
+              </tr>
+            {% endfor %}
+        </table>
+    </div> {# .content #}
+</div>
+{% endblock %}

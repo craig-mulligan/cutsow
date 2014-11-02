@@ -17,6 +17,11 @@ urlpatterns = patterns('',
                        url(r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm),
                        url(r'^reset/done/$', password_reset_complete),
                        url(r'^logout/$', views.logout_view),
+
                        url(r'^/', include('django.contrib.auth.urls')),
+                       url(r'^feed/product/(?P<product_id>.*)$', views.singleproduct, name='product'),
+                       url(r'^feed/user/(?P<user_id>.*)$', views.profile, name='profile'),
+                       url(r'^feed/followers/user/(?P<user_id>.*)$', views.followerlisting, name='followerlisting'),
+                       url(r'^feed/follow/', views.follow, name='follow'),
                        (r'^grappelli/', include('grappelli.urls')),
                        )

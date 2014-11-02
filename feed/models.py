@@ -9,3 +9,5 @@ class Info(models.Model):
     avatar = models.ImageField(upload_to = 'static/avatars/', default = 'avatars/no-img.jpg')
     rating = models.IntegerField(default=0)
     designer = models.BooleanField(default=False)
+    follows = models.ManyToManyField(User, related_name='followed_by', symmetrical=False, blank=True)
+    followers = models.ManyToManyField(User, related_name='following', symmetrical=False, blank=True)

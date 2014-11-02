@@ -1,0 +1,22 @@
+{% extends "feed/base.html" %}
+{% block content %}
+<div class="main">
+    <div class="row">
+     {% include "dashboard/dashmenu.html" %}
+            <div class="content col-md-9">
+                <div class="products">
+                    {% for f in follows.all %}
+                    <div class="col-md-4">
+                        <a href="/dashboard/edit/{{p.id}}" class="product" style="background-image:url('/{{p.avatar}}')">
+                
+                        </a>
+                        <h1>{{p.title}}</h1>
+                        <p>{{p.description}}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                   
+            </div> {# .content #}
+    </div> {# .row #}
+</div>
+{% endblock %}

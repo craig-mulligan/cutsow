@@ -15,6 +15,13 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.core.urlresolvers import reverse
 import os
+from dashboard.models import Product
+from feed import models
+from django.db.models import Max, Min, Sum, F, Count
+
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+import json
 
 from feed import functions
 
@@ -89,8 +96,52 @@ def confirm(request, key=None):
 def index(request):
     return redirect("/feed")
 
+
+def singleproduct(request, product_id):
+    p = Product.objects.get(pk=int(product_id))
+    return render(request, "feed/singleproduct.html", {
+        "p": p
+    })
+
+def profile(request, user_id):
+    user = User.objects.get(pk=int(user_id))
+    products = Product.objects.filter(user=user).all()
+    followers = user.info.followers.count()
+
+    return render(request, "feed/userprofile.html", {
+        "user": user,
+        "products": products,
+        "viewer": request.user,
+        "followers" : followers
+    })
+
+@login_required
+def follow(request):
+    if request.is_ajax() and request.POST:
+        follower = User.objects.get(pk=int(request.POST.get('follower')))
+        designer = User.objects.get(pk=int(request.POST.get('designer')))
+        designer.info.followers.add(follower)
+        designer.info.save()
+        designer.save()
+
+        data = {'message': "%s added" % designer}
+        return HttpResponse(json.dumps(data), content_type='application/json')
+    else:
+        raise Http404
+
+def followerlisting(request, user_id):
+    print user_id
+    user = User.objects.get(pk=int(user_id))
+    followers = user.info.followers.all()
+    return render(request, "feed/followerslisting.html", {
+        "user": user,
+        "followers" : followers
+    })
+
+
 @login_required
 def userfeed(request):
+    products = Product.objects.all()
     return render(request, "feed/index.html", {
-      
+      "products": products,
     })

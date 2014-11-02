@@ -1,0 +1,31 @@
+{% extends "feed/base.html" %}
+{% block content %}
+<div class="main">
+    <div class="row">
+            <div class="content">
+                <div class="products col-md-6 col-md-offset-3">
+                    <a href="#" class="product" style="background-image:url('/{{p.image}}')">
+                        <div class="rating">
+                             {{p.rating}}   
+                        </div>
+                        <div class="thumbsup">
+                            <span class="glyphicon glyphicon-thumbs-up"></span>
+                            <span class="glyphicon glyphicon-thumbs-down"></span>
+                        </div>
+                    </a>
+                    <div class="row">
+                        <div class="meta col-md-8">
+                            <h3>{{p.title}}</h3>
+                            <p>by <a href="/feed/user/{{p.user.id}}">{{p.user.first_name}}</a></p>
+                        </div>
+                        <div class="rating col-md-4">
+                              <button type="button" class="btn btn-default cut">Cut</button>
+                              <button type="button" class="btn btn-default sow">Sow</button>
+                        </div>
+                    </row>
+                </div>
+                   
+            </div> {# .content #}
+    </div> {# .row #}
+</div>
+{% endblock %}

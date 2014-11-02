@@ -1,9 +1,11 @@
 body { padding: 50px 0 0; background-color: #f5f5f5; }
 
 a { color: #6b7583; }
-a:hover, a:active, a:focus { color: #fff; }
+a:hover, a:active, a:focus { color: #00142c; }
 
 label { display: block; }
+
+.navbar-toggle .icon-bar { background: #6b7583; }
 
 .btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active { background-color: #00142c; border-color: #00142c; }
 
@@ -12,6 +14,7 @@ label { display: block; }
 #longmenu { padding: 30px 0; background: #00142c; color: #fff; position: fixed; }
 #longmenu ul { list-style: none; padding-left: 0px; }
 #longmenu li { color: white; border-bottom: 1px solid #fff; padding: 15px 15px 15px 30px; }
+#longmenu li a { color: #fff; }
 #longmenu li a:hover { color: #fff; }
 
 .content { padding: 30px; }
@@ -82,5 +85,27 @@ table .progress-bar { background-color: #6b7583; -webkit-box-shadow: none; box-s
 form img { max-width: 70%; margin: 10px 0; display: block; }
 
 #id_email, #id_new_password2, #id_new_password1 { height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; border-radius: 4px; width: 100%; margin-bottom: 15px; }
+
+.products > div { min-height: 360px; }
+
+.thumbsup { width: 100%; padding: 50px; text-align: center; font-size: 5rem; color: #fff; }
+.thumbsup span { display: none; }
+
+.meta h3 { margin-top: 0px; }
+
+.rating .btn { float: right; margin-left: 5px; }
+
+.btn.cut { border-color: #ed7d79; color: #ed7d79; background: none; }
+.btn.sow { border-color: #aee8ae; color: #aee8ae; background: none; }
+.btn.follow { float: none; }
+
+.avatar { border-radius: 50%; width: 300px; height: 300px; margin: auto; background-size: cover; background-position: center center; margin-bottom: 15px; }
+.avatar.small { width: 50px; height: 50px; }
+.avatar.medium { width: 100px; height: 100px; }
+
+.text-center { text-align: center; }
+.text-center > div { margin-bottom: 15px; }
+
+.table > tbody > tr > td { vertical-align: middle; }
 
 @media print { body { background-color: #fff; } }

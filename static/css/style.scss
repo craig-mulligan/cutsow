@@ -4,6 +4,8 @@ $dashboardprimary: #00142C;
 
 $feedprimary: #ED7D79;
 $feedsecondary:#FFC09E;
+
+$mint: #AEE8AE;
 body {
     padding: 50px 0 0;
     background-color: #f5f5f5;
@@ -11,7 +13,7 @@ body {
 a {
     color: $primary;
     &:hover, &:active, &:focus {
-        color: #fff;
+        color: $darkprimary;
     }
 }
 // h1 {
@@ -24,6 +26,9 @@ label {
     display: block;
 }
 
+.navbar-toggle .icon-bar {
+    background: $primary;
+}
 
 
 .btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active {
@@ -52,6 +57,9 @@ label {
         color: white;
         border-bottom: 1px solid #fff;
         padding: 15px 15px 15px 30px;
+        a {
+            color:  #fff;
+        }
         a:hover {
             color: #fff;
         }
@@ -285,6 +293,79 @@ display: block;
     border-radius: 4px;
     width: 100%;
     margin-bottom: 15px;
+}
+
+// feed
+.products > div {
+    min-height: 360px;
+}
+
+.thumbsup {
+    width: 100%;
+    padding: 50px;
+    text-align: center;
+    font-size: 5rem;
+    color: #fff;
+    span {
+        display: none;
+    }
+}
+
+.meta {
+    h3 {
+        margin-top:0px;
+    }
+}
+.rating {
+    .btn {
+        float: right;
+        margin-left: 5px;
+    }
+}
+.btn {
+    &.cut {
+        border-color: $feedprimary;
+        color: $feedprimary;
+        background: none;
+    }
+    &.sow {
+        border-color: $mint;
+        color:$mint;
+        background: none;
+    }
+    &.follow {
+        float: none;
+    }
+}
+
+// userprofile 
+.avatar {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    margin: auto;   
+    background-size:cover;
+    background-position: center center;
+    margin-bottom: 15px;
+    &.small {
+        width:50px;
+        height: 50px;
+    }
+    &.medium {
+        width:100px;
+        height:100px;
+    }
+}
+
+.text-center {
+    text-align: center;
+    > div {
+        margin-bottom: 15px;
+    }
+}
+
+ .table>tbody>tr>td {
+        vertical-align: middle;
 }
 
 @media print {
