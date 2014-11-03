@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     "feed",
     "dashboard",
     "redis_cache",
-    "djrill"
+    "djrill",
 )
 SITE_ID = 1
 STATICFILES_FINDERS = (
@@ -95,20 +95,19 @@ CACHES = {
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
-MANDRILL_API_KEY = "w3FIMH1p5NSL0j73bkeThQ"
-DEFAULT_FROM_EMAIL = 'info@4diprivaca.com'
+MANDRILL_API_KEY = "S4op8twYhGH6B5yixeYKmw"
+DEFAULT_FROM_EMAIL = 'craig@breadcrumb.io'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
-
+    "dashboard.context_processors.notificationcount_processor",
 )
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, '/static')
 MEDIA_URL = '/media/'
-
 
 # Auth
 LOGIN_REDIRECT_URL = "/"

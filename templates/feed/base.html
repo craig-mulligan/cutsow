@@ -29,12 +29,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Cut&Sow</a>
+                <a class="navbar-brand" href="/feed/popular">Cut&Sow</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     {% if user.is_authenticated %}
-                    <li><a href="/feed">Feed</a></li>
+                    <li><a href="/feed/userfeed">Feed</a></li>
                     {% endif %}
                     <li><a href="/feed/popular">Popular</a></li>
                     <li><a href="/feed/latest">Latest</a></li>
@@ -45,19 +45,11 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                    <!--<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="light">Hi</span> {{user.first_name}} <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li> -->
-                    <li><a href="/dashboard/personal"><span class="light">Hi</span> {{user.first_name}}</a></li>
+                    <li><a href="/dashboard/notifications"><span class="light">Hi</span> {{user.first_name}}
+                     {% if notificationscount %}
+                        <span class="badge">{{notificationscount}}</span>
+                     {% endif %}
+                    </a></li>
                     <li><a href="/logout">Log out</a></li>
                     {% else %}
                     <li><a href="/login">Log in</a></li>
@@ -77,22 +69,30 @@
     <section id="main-content">
     {% block content %}{% endblock %}
     </section>
-    <div id="help_modal" class="modal fade">
+    <div id="preorder_modal" class="modal fade">
         <div class="modal-dialog">
-            <form method="post" action="/feed/help" class="modal-content help_form">
+            <form method="post" class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Get help</h4>
+                    <h4 class="modal-title">Preorder</h4>
                 </div>
                 <div class="modal-body">
-                    <h4>I need help with the following question</h4>
-                    <p class="question"></p>
-                    <input type="hidden" name="question_text" class="question_text">
+                    
                     {% csrf_token %}
-                    <h4>Any additional information</h4>
-                    <div class="form-group">
-                    <textarea name="additional_information" class="additional_information form-control"></textarea>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input value="I'd like a {{ p.title }}" name="subject" class="form-control"></input>
                 </div>
+                <div class="form-group">
+                    <label>I live in</label>
+                    <input type="" placeholder="city or suburb" name="location" class="form-control"></input>
+                </div>
+                <div class="form-group">
+                    <h4>Extra info</h4>
+                    <textarea placeholder="" name="additional_information" class="additional_information form-control"></textarea>
+
+                </div>
+                    <p>Note: this email is sent to the designer, we can't garantee that they check there mails everyday.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -106,7 +106,7 @@
             <div class="modal-content help_form">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Submit assessment</h4>
+                    <h4 class="modal-title">PreOrder {{ p.title }}</h4>
                 </div>
                 <div class="modal-body">
                     <p>This cannot be undone. Your assessment results will appear on the next screen.</p>
@@ -119,23 +119,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    <div id="error_modal" class="modal fade bs-example-modal-sm">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content help_form">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Incomplete assessment</h4>
-                </div>
-                <div class="modal-body">
-                    <p>There are still unanswered questions in your assessment. Please answer these before you submit.</p>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    
     {% include "parts/scripts.html" %}
 </body>
 </html>

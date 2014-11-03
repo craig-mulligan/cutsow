@@ -1,13 +1,14 @@
-<div class="col-md-3" id="longmenu">
+<div class="col-md-3 col-xs-6" id="longmenu">
 	<ul>
-	    <a href="/dashboard/personal"><li>Personal</li></a>
 	    {% if user.info.designer == True %}
-	    <a href="/dashboard/products"><li>Products</li></a>
+	    <a href="/dashboard/products"><li class="products">Products</li></a>
 	    {% endif %}
-	    <a href="/dashboard/following"><li>Following</li></a>
-	    <a href="/dashboard/notifications"><li>notifications</li></a>
+	    <a href="/dashboard/following"><li class="following">Following</li></a>
+	    <a href="/dashboard/notifications"><li class="notifications">Notifications</li></a>
+	    <a href="/dashboard/favourites"><li class="favourites">Favourites</li></a>
+	    <a href="/dashboard/personal"><li class="personal">Personal</li></a>
 	</ul>
 </div>
-<div class="col-md-3">
+<div class="col-md-3 col-xs-6">
 	{# lazyhack! this just blocks out space behind menu cause its fixes #}
 </div>

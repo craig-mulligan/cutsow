@@ -3,12 +3,14 @@
 <div class="main">
     <div class="row">
             <div class="content">
-                <div class="products">
-                    {% for p in products %}
+
+                <div class="productgroup row">
                     {% include "parts/productloop.html" %}
-                    {% endfor %}
                 </div>
-                   
+            	<div class="row">
+	                <button type="button" data-type="None" class="btn btn-default loadmore">loadmore</button>
+        		</div>
+                
             </div> {# .content #}
     </div> {# .row #}
 </div>

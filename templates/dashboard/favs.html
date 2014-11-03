@@ -1,0 +1,18 @@
+{% extends "feed/base.html" %}
+{% block content %}
+<div class="main">
+    <div class="row">
+     {% include "dashboard/dashmenu.html" %}
+            <div class="dash content col-md-9">
+                <div class="dashactivate menu"><span class="glyphicon glyphicon-cog"></span></div>
+                <div class="productgroup row">
+                    {% include "parts/productloop.html" %}
+                </div>
+                <div class="row">
+                    <button type="button" data-type="None" class="btn btn-default loadmore">loadmore</button>
+                </div>  
+
+            </div> {# .content #}
+    </div> {# .row #}
+</div>
+{% endblock %}

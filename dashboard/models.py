@@ -3,12 +3,11 @@ from django.contrib.auth.models import User
 import datetime
 
 class Product(models.Model):
+    created = models.DateTimeField(default=datetime.datetime.utcnow())
     title = models.TextField(default=None, null=True)
     description = models.TextField(default=None, null=True)
-    rating = models.IntegerField(default=0)
     user = models.ForeignKey(User)
+    rating = models.IntegerField(default=0)
     image = models.ImageField(upload_to = 'static/product_images/', default = 'product_images/no-img.jpg')
-
-    @classmethod
-    def create(cls):
-        return cls(completed=datetime.datetime.utcnow())
+    dopers = models.ManyToManyField(User, related_name='dopers', symmetrical=False, blank=True)
+    

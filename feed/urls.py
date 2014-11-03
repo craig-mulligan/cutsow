@@ -4,9 +4,12 @@ from django.contrib import admin
 import views
 admin.autodiscover()
 
+
 urlpatterns = patterns('',
                        url(r'^$', views.index, name='index'),
-                       url(r'^feed/$', views.userfeed, name='index'),
+                       url(r'^feed/userfeed$', views.userfeed, name='index'),
+                       url(r'^feed/latest$', views.latest, name='latest'),
+                       url(r'^feed/popular$', views.popular, name='popular'),
                        url(r'^register/$', views.register),
                        url(r'^confirm/(?P<key>.*)$', views.confirm),
                        url(r'^admin/', include(admin.site.urls)),
@@ -23,5 +26,7 @@ urlpatterns = patterns('',
                        url(r'^feed/user/(?P<user_id>.*)$', views.profile, name='profile'),
                        url(r'^feed/followers/user/(?P<user_id>.*)$', views.followerlisting, name='followerlisting'),
                        url(r'^feed/follow/', views.follow, name='follow'),
+                       url(r'^feed/dope/', views.dope, name='dope'),
+                       url(r'^feed/loadmore/', views.loadmore, name='loadmore'),
                        (r'^grappelli/', include('grappelli.urls')),
                        )

@@ -3,37 +3,38 @@
 <div class="main">
     <div class="row">
             <div class="content">
-                <div class="col-md-6 col-md-offset-3">
-                    <div class="avatar" style="background-image:url('/{{user.info.avatar}}')">
+                <div class="col-md-3">
+                    <div class="avatar medium" style="background-image:url('/{{userprofile.info.avatar}}')">
                         <div class="thumbsup">
                             <span class="glyphicon glyphicon-thumbs-up"></span>
                             <span class="glyphicon glyphicon-thumbs-down"></span>
                         </div>
                     </div>
+                    
+
                     <div class="row text-center">
                         <div class="meta">
-                            <h3>{{user.first_name}}</h3>
-                            <p><a href="https://twitter.com/{{user.info.twitter}}">{{user.info.twitter}}</a></p>
+                            <h3>{{userprofile.first_name}}</h3>
+                            <p><a href="https://twitter.com/{{userprofile.info.twitter}}">{{userprofile.info.twitter}}</a></p>
                             <p>Followed by
-                            <a href="/feed/followers/user/{{user.id}}">
+                            <a class="followcount" href="/feed/followers/user/{{userprofile.id}}">
                                 {{followers}}
                             </a>
                             </p>
                         </div>
                         <div class="rating">
-                              <button type="button" data-designer="{{user.id}}" data-user="{{viewer.id}}" class="btn btn-default follow sow">follow</button>
+                            {% if user.id in followcheck %}
+                                    <button type="button" data-designer="{{userprofile.id}}" data-user="{{user.id}}" class="btn btn-default follow active">unfollow</button>
+                            {% else %}
+                                    <button type="button" data-designer="{{userprofile.id}}" data-user="{{user.id}}" class="btn btn-default follow">follow</button>
+                            {% endif %}
                         </div>
                     </div> {# .col #}
             </div> {# .content #}
-    </div> {# .row #}
-    <div class="row">
-            <div class="content">
-                <div class="col-md-10 col-md-offset-1">
-                    {% for p in products %}
+
+                <div class="col-md-9">
                         {% include "parts/productloop.html" %}
-                    {% endfor %}
                 </div> {# .col #}
-            </div> {# .content #}
     </div> {# .row #}
 </div>
 {% endblock %}

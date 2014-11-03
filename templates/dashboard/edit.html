@@ -3,7 +3,8 @@
 <div class="main">
     <div class="row">
      {% include "dashboard/dashmenu.html" %}
-            <div class="content col-md-9">
+            <div class="dash content col-md-9">
+                <div class="dashactivate menu"><span class="glyphicon glyphicon-cog"></span></div>
                 <form class="col-md-9" role="form" action="" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group">

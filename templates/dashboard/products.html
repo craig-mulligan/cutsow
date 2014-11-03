@@ -3,7 +3,8 @@
 <div class="main">
     <div class="row">
      {% include "dashboard/dashmenu.html" %}
-            <div class="content col-md-9">
+            <div class="dash content col-md-9">
+                <div class="dashactivate menu"><span class="glyphicon glyphicon-cog"></span></div>
                 <div class="products">
                     <div class="col-md-4">
                         <a href="/dashboard/create" class="new product">
@@ -15,11 +16,11 @@
                     {% for p in products %}
                     <div class="col-md-4">
                         <a href="/dashboard/edit/{{p.id}}" class="product" style="background-image:url('/{{p.image}}')">
-                            <div class="rating">
+                            <div class="ratingcount">
                                  {{p.rating}}   
                             </div>
                         </a>
-                        <h1>{{p.title}}</h1>
+                        <h3>{{p.title}}</h3>
                         <p>{{p.description}}</p>
                     </div>
                     {% endfor %}

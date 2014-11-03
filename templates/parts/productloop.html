@@ -1,6 +1,7 @@
-<div class="col-md-4">
+{% for p in products %}
+<div class="col-md-4 product-wrapper">
     <a href="/feed/product/{{p.id}}" class="product" style="background-image:url('/{{p.image}}')">
-        <div class="rating">
+        <div class="ratingcount">
              {{p.rating}}   
         </div>
         <div class="thumbsup">
@@ -14,8 +15,12 @@
             <p>by <a href="/feed/user/{{p.user.id}}">{{p.user.first_name}}</a></p>
         </div>
         <div class="rating col-xs-6">
-              <button type="button" class="btn btn-default cut">Cut</button>
-              <button type="button" class="btn btn-default sow">Sow</button>
+              {% if p.id in favourites %}
+              <button type="button" data-sow="true" data-product="{{p.id}}" class="btn btn-default dope">unDope!<span class="plus-one"> -1</span></button>
+              {% else %}
+              <button type="button" data-sow="true" data-product="{{p.id}}" class="btn btn-default dope">Dope!<span class="plus-one"> +1</span></button>
+              {% endif %}
         </div>
     </div>
 </div>
+{% endfor %}

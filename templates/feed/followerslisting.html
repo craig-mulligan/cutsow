@@ -1,35 +1,32 @@
 {% extends "feed/base.html" %}
 {% block content %}
 <div class="main">
-    <div class="content">
-        <div class="row">
-            <div class="content">
-                <div class="col-xs-3">
-                    <div class="avatar medium" style="background-image:url('/{{user.info.avatar}}')"></div>
+    <div class="content row">
+        <div class="container col-md-10 col-md-offset-1">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="avatar medium" style="background-image:url('/{{followed.info.avatar}}')"></div>
                 </div>
-                <div class="col-xs-9">
-                    <div class="meta">
-                        <h3><a href="/feed/user/{{user.id}}">{{user.first_name}}'s</a> Followers</h3>
-                    </div>
+                <div class="col-sm-9">
+                    <h3><a href="/feed/user/{{followed.id}}">{{followed.first_name}}'s</a> Followers</h3>
                 </div>
-                
-            </div> {# .content #}
-        </div> {# .row #}
-        <table class="table table-striped">
-            {% for f in followers %}
-              <tr>
-                <td>
-                  <div class="avatar small" style="background-image:url('/{{f.info.avatar}}')"></div>
-                </td>
-                <td>
-                 <a href="/feed/user/{{f.id}}"> {{f.first_name}}</a>
-                </td>
-                <td class="warning">
-                    {{f.rating}}
-                </td>
-              </tr>
-            {% endfor %}
-        </table>
+            </div>
+            <table class="table table-striped">
+                {% for f in followers %}
+                  <tr>
+                    <td class="xs">
+                      <div class="avatar small" style="background-image:url('/{{f.info.avatar}}')"></div>
+                    </td>
+                    <td>
+                     <a href="/feed/user/{{f.id}}"> {{f.first_name}}</a>
+                    </td>
+                    <td class="warning">
+                        {{f.rating}}
+                    </td>
+                  </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div> {# .content #}
 </div>
 {% endblock %}

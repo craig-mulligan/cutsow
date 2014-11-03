@@ -3,9 +3,9 @@
 <div class="main">
     <div class="row">
             <div class="content">
-                <div class="products col-md-6 col-md-offset-3">
+                <div class="col-md-6 col-md-offset-3 product-wrapper">
                     <a href="#" class="product" style="background-image:url('/{{p.image}}')">
-                        <div class="rating">
+                        <div class="ratingcount">
                              {{p.rating}}   
                         </div>
                         <div class="thumbsup">
@@ -14,17 +14,38 @@
                         </div>
                     </a>
                     <div class="row">
-                        <div class="meta col-md-8">
+                        <div class="meta col-xs-6">
                             <h3>{{p.title}}</h3>
                             <p>by <a href="/feed/user/{{p.user.id}}">{{p.user.first_name}}</a></p>
                         </div>
-                        <div class="rating col-md-4">
-                              <button type="button" class="btn btn-default cut">Cut</button>
-                              <button type="button" class="btn btn-default sow">Sow</button>
+                        <div class="rating col-xs-6">
+                              {% if p.id in favourites %}
+                                <button type="button" data-product="{{p.id}}" class="btn btn-default dope">unDope!<span class="plus-one"> -1</span></button>
+                              {% else %}
+                                <button type="button" data-product="{{p.id}}" class="btn btn-default dope">Dope!<span class="plus-one"> +1</span></button>
+                              {% endif %}
+                                <button type="button"  data-product="{{p.id}}" class="btn btn-default preorder">Pre-order</button>
                         </div>
-                    </row>
+                    </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped">
+                            {% for d in dopers %}
+                              <tr>
+                                <td class="xs">
+                                  <div class="avatar small" style="background-image:url('/{{d.info.avatar}}')"></div>
+                                </td>
+                                <td>
+                                 <a href="/feed/user/{{d.id}}"> {{d.first_name}}</a>
+                                </td>
+                                <td class="warning">
+                                    {{d.rating}}
+                                </td>
+                              </tr>
+                            {% endfor %}
+                        </table>
+                    </div>  
                 </div>
-                   
             </div> {# .content #}
     </div> {# .row #}
 </div>

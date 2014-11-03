@@ -1,0 +1,16 @@
+{% for n in notifications %}
+     <tr>
+      <td class="xs">
+        <div class="avatar small" style="background-image:url('/{{n.actor.info.avatar}}')"></div>
+      </td>
+     <td>
+       <a href="/feed/user/{{n.actor.id}}"> {{n.actor.first_name}}</a> {{n.text}} 
+       {% if n.product %}
+       <a href="/feed/product/{{n.product.id}}">{{n.product.title}}</a>
+       {% endif %}
+     </td>
+      <td class="warning">
+          {{f.rating}}
+      </td>
+    </tr>
+{% endfor %}

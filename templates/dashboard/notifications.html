@@ -1,0 +1,31 @@
+{% extends "feed/base.html" %}
+{% block content %}
+<div class="main">
+    <div class="row">
+     {% include "dashboard/dashmenu.html" %}
+        <div class="dash content col-md-9">
+              <div class="dashactivate menu"><span class="glyphicon glyphicon-cog"></span></div>
+              <table class="table table-striped">
+                  {% for n in notifications %}
+                     <tr>
+                      <td class="xs">
+                        <div class="avatar small" style="background-image:url('/{{n.actor.info.avatar}}')"></div>
+                      </td>
+                     <td>
+                       <a href="/feed/user/{{n.actor.id}}"> {{n.actor.first_name}}</a> {{n.text}} 
+                       {% if n.product %}
+                       <a href="/feed/product/{{n.product.id}}">{{n.product.title}}</a>
+                       {% endif %}
+                     </td>
+                      <td class="warning">
+                          {{f.rating}}
+                      </td>
+                    </tr>
+                  {% endfor %}
+              </table>
+              <button type="button" data-designer="{{userprofile.id}}" data-user="{{user.id}}" class="btn btn-default loadmore-notes">loadmore</button>
+                   
+        </div> {# .content #}
+    </div> {# .row #}
+</div>
+{% endblock %}
